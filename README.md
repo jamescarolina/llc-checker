@@ -1,8 +1,8 @@
 # llc-checker
 
-A command-line tool to check valid accounts in lickylive
+A command-line tool to check valid accounts in luckycrush
 
 
 Team 
-MarcusHolloway7
-James
+@marcusHolloway7, @jamescarolina
+
